@@ -4,6 +4,13 @@ public class InverseMatrix {
 
     public static double[][] TMatrix(double[][] Matrix){
     double [][] T_Matrix = new double[Matrix.length][Matrix.length];
+    if(Matrix.length==2){
+        T_Matrix[0][0]=Matrix[1][1];
+        T_Matrix[1][1]=Matrix[0][0];
+        T_Matrix[0][1]=Matrix[0][1];
+        T_Matrix[1][0]=Matrix[1][0];
+        return T_Matrix;
+    }
         for(int i =0; i<Matrix.length; i++){
             for(int j = 0; j<Matrix.length ; j++){
                 T_Matrix[i][j]=Matrix[j][i];
@@ -24,9 +31,11 @@ public class InverseMatrix {
     public static double[][] Cofactor(double[][] TMatrix){
         double [][] CMatrix = new double[TMatrix.length][TMatrix.length];
         if(TMatrix.length==2){
+            CMatrix[0][0] =TMatrix[0][0];
             CMatrix[0][1] = -TMatrix[0][1];
             CMatrix[1][0] = -TMatrix[1][0];
-
+            CMatrix[1][1] = TMatrix[1][1];
+            return CMatrix;
         }
         for(int i = 0; i<TMatrix.length; i++){
             for(int j =0 ; j< TMatrix.length; j++){
@@ -79,7 +88,7 @@ public class InverseMatrix {
     double[][] Matrix = new double[dem][dem];
         for(int i =0; i<Matrix.length; i++){
             for (int j =0 ;j<Matrix.length; j++){
-                System.out.println(i+1+"행"+j+1+"열에 입력할 값? :");
+                System.out.println(i+1+"행"+(j+1)+"열에 입력할 값? :");
                 Matrix[i][j] = sc.nextDouble();
             }
         }
